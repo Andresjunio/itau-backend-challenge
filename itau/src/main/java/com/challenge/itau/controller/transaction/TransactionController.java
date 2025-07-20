@@ -3,6 +3,7 @@ package com.challenge.itau.controller.transaction;
 import com.challenge.itau.domain.DTOs.TransactionDTO;
 import com.challenge.itau.domain.DTOs.TransactionStatisticsDTO;
 import com.challenge.itau.service.transaction.TransactionService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +18,7 @@ public class TransactionController {
     }
 
     @PostMapping("/transacao")
-    public HttpStatus receiveTransaction(
-            @RequestBody TransactionDTO transaction) {
-
+    public HttpStatus receiveTransaction(@Valid @RequestBody TransactionDTO transaction) {
         return transactionService.receiveTransaction(transaction);
     }
 
